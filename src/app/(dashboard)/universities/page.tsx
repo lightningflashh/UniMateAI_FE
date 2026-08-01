@@ -1,3 +1,3 @@
-export default function Page() {
-  return <h1>Dashboard</h1>
+export default function UniversitiesPage() {
+  return <div>Universities</div>
 }
