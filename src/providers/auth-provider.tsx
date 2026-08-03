@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 
+import { WanderingEyes } from '@/components/wandering-eyes'
 import { authApi } from '@/features/auth/api/auth.api'
 import { useAuthStore } from '@/stores/auth.store'
 
@@ -49,7 +50,7 @@ export function AuthProvider({
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        Loading...
+        <WanderingEyes className="h-20 w-[180px] [--eye-color:#e2e2e3] [--pupil-color:#0f172a]" />
       </div>
     )
   }
