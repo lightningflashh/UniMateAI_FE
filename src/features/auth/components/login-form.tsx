@@ -1,17 +1,42 @@
 'use client'
 
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Eye, EyeOff } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+
+import { useLogin } from '../hooks/use-login'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import type { LoginFormValues} from '@/features/auth/schemas/login.schema';
+import { loginSchema } from '@/features/auth/schemas/login.schema'
+
+
 
 export function LoginForm() {
   const [showPassword, setShowPassword] = useState(false)
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  })
+  
+  const loginMutation = useLogin()
+  const onSubmit = (data: LoginFormValues) => {
+    loginMutation.mutate(data)
+  }
 
   return (
     <Card className="w-full max-w-md rounded-3xl border-0 shadow-xl">
@@ -26,7 +51,7 @@ export function LoginForm() {
       </CardHeader>
 
       <CardContent>
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-2">
             <Label htmlFor="email">
               Email
@@ -36,7 +61,14 @@ export function LoginForm() {
               id="email"
               type="email"
               placeholder="you@example.com"
+              {...register('email')}
             />
+
+            {errors.email && (
+              <p className="text-sm text-red-500">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           <div className="space-y-2">
@@ -48,8 +80,8 @@ export function LoginForm() {
               <Input
                 id="password"
                 type={showPassword ? 'text' : 'password'}
-                placeholder="Enter your password"
                 className="pr-12"
+                {...register('password')}
               />
 
               <Button
@@ -68,6 +100,11 @@ export function LoginForm() {
                 )}
               </Button>
             </div>
+              {errors.password && (
+                <p className="text-sm text-red-500">
+                  {errors.password.message}
+                </p>
+              )}
           </div>
 
           <div className="flex items-center justify-between">
@@ -89,9 +126,15 @@ export function LoginForm() {
               Forgot password?
             </Link>
           </div>
-
-          <Button className="h-11 w-full">
-            Sign In
+          
+          <Button
+            type="submit"
+            className="h-11 w-full"
+            disabled={loginMutation.isPending}
+          >
+            {loginMutation.isPending
+              ? 'Signing in...'
+              : 'Sign In'}
           </Button>
 
           <p className="text-muted-foreground text-center text-sm">
