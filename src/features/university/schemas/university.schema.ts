@@ -19,8 +19,6 @@ export const universitySchema = z.object({
 
   website: z.string().optional(),
 
-  logo: z.string().optional(),
-
   description: z.string().optional(),
 })
 

@@ -11,7 +11,6 @@ export function toUniversityFormValues(
     province: university.province,
     address: university.address,
     website: university.website ?? '',
-    logo: university.logo ?? '',
     description:
       university.description ?? '',
   }

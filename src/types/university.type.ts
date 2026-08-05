@@ -9,7 +9,7 @@ export interface University {
 
   website: string | null
 
-  logo: string | null
+  logoUrl: string | null
 
   province: string
 
@@ -50,7 +50,7 @@ export interface CreateUniversityRequest {
 
   website?: string
 
-  logo?: string
+  logoUrl?: string
 
   province: string
 

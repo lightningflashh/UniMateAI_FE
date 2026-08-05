@@ -42,7 +42,6 @@ export function UniversityForm({
       province: '',
       address: '',
       website: '',
-      logo: '',
       description: '',
       ...defaultValues,
     },
@@ -55,6 +54,7 @@ export function UniversityForm({
     >
       <FormField
         label="Name"
+        htmlFor="name"
         required
         error={errors.name?.message}
       >
@@ -66,6 +66,7 @@ export function UniversityForm({
 
       <FormField
         label="Short Name"
+        htmlFor="shortName"
         required
         error={errors.shortName?.message}
       >
@@ -77,6 +78,7 @@ export function UniversityForm({
 
       <FormField
         label="Code"
+        htmlFor="code"
         required
         error={errors.code?.message}
       >
@@ -88,6 +90,7 @@ export function UniversityForm({
 
       <FormField
         label="Province"
+        htmlFor='province'
         required
         error={errors.province?.message}
       >
@@ -99,6 +102,7 @@ export function UniversityForm({
 
       <FormField
         label="Address"
+        htmlFor='address'
         required
         error={errors.address?.message}
       >
@@ -110,6 +114,7 @@ export function UniversityForm({
 
       <FormField
         label="Website"
+        htmlFor='website'
         error={errors.website?.message}
       >
         <Input
@@ -117,19 +122,10 @@ export function UniversityForm({
           placeholder="https://hcmute.edu.vn"
         />
       </FormField>
-
-      <FormField
-        label="Logo"
-        error={errors.logo?.message}
-      >
-        <Input
-          {...register('logo')}
-          placeholder="Logo URL"
-        />
-      </FormField>
-
+      
       <FormField
         label="Description"
+        htmlFor='description'
         error={errors.description?.message}
       >
         <Input

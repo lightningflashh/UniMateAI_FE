@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-
 import {
   Dialog,
   DialogContent,
@@ -26,9 +24,6 @@ export function UniversityDialog({
   onOpenChange,
   university,
 }: Props) {
-  const [loading, setLoading] =
-    useState(false)
-
   const createUniversity = useCreateUniversity()
   const updateUniversity = useUpdateUniversity()
 
@@ -37,14 +32,20 @@ export function UniversityDialog({
   async function handleSubmit(
     values: UniversityFormValues,
   ) {
+    const payload = {
+      ...values,
+      website: values.website || undefined,
+      description: values.description || undefined,
+    }
+
     try {
       if (isEditing) {
         await updateUniversity.mutateAsync({
           id: university.id,
-          data: values,
+          data: payload,
         })
       } else {
-        await createUniversity.mutateAsync(values)
+        await createUniversity.mutateAsync(payload)
       }
 
       onOpenChange(false)

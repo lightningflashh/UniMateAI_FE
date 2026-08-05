@@ -5,6 +5,8 @@ import { cn } from '@/lib/utils'
 interface FormFieldProps {
   label: string
 
+  htmlFor?: string
+
   error?: string
 
   required?: boolean
@@ -16,6 +18,7 @@ interface FormFieldProps {
 
 export function FormField({
   label,
+  htmlFor,
   error,
   required,
   className,
@@ -28,7 +31,7 @@ export function FormField({
         className,
       )}
     >
-      <FormLabel>
+      <FormLabel htmlFor={htmlFor}>
         {label}
 
         {required && (
