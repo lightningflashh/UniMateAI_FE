@@ -1,13 +1,16 @@
 import { useMutation } from '@tanstack/react-query'
 import type { AxiosError } from 'axios'
+import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 
 import { authApi } from '@/features/auth/api/auth.api'
 import type { ApiError } from '@/interfaces/common'
 import { useAuthStore } from '@/stores/auth.store'
 import type { LoginRequest } from '@/types/auth.type'
+import { USER_ROLE } from '@/types/user.type'
 
 export function useLogin() {
+  const router = useRouter()
   const setAuth = useAuthStore(
     state => state.setAuth,
   )
@@ -27,6 +30,9 @@ export function useLogin() {
         data.accessToken,
         data.user,
       )
+
+      const targetPath = data.user.role === USER_ROLE.ADMIN ? '/dashboard' : '/'
+      router.push(targetPath)
 
       toast.success('Login successfully')
     },

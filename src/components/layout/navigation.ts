@@ -1,7 +1,7 @@
 import {
   BookOpen,
   GraduationCap,
-  Home,
+  ChartBar,
   School,
   Settings,
   Users,
@@ -10,8 +10,8 @@ import {
 export const navigation = [
   {
     title: 'Dashboard',
-    href: '/',
-    icon: Home,
+    href: '/dashboard',
+    icon: ChartBar,
   },
   {
     title: 'Universities',
