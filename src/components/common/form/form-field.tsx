@@ -1,0 +1,46 @@
+import { FormError } from '@/components/common/form/form-error'
+import { FormLabel } from '@/components/common/form/form-label'
+import { cn } from '@/lib/utils'
+
+interface FormFieldProps {
+  label: string
+
+  error?: string
+
+  required?: boolean
+
+  className?: string
+
+  children: React.ReactNode
+}
+
+export function FormField({
+  label,
+  error,
+  required,
+  className,
+  children,
+}: FormFieldProps) {
+  return (
+    <div
+      className={cn(
+        'space-y-2',
+        className,
+      )}
+    >
+      <FormLabel>
+        {label}
+
+        {required && (
+          <span className="ml-1 text-destructive">
+            *
+          </span>
+        )}
+      </FormLabel>
+
+      {children}
+
+      <FormError>{error}</FormError>
+    </div>
+  )
+}

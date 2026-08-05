@@ -6,13 +6,12 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { useLogin } from '../hooks/use-login'
-
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useLogin } from '@/features/auth/hooks/use-login'
 import type { LoginFormValues} from '@/features/auth/schemas/login.schema';
 import { loginSchema } from '@/features/auth/schemas/login.schema'
 

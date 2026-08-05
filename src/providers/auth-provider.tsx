@@ -50,7 +50,7 @@ export function AuthProvider({
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <WanderingEyes className="h-20 w-[180px] [--eye-color:#e2e2e3] [--pupil-color:#0f172a]" />
+        <WanderingEyes className="h-20 w-[180px] [--eye-color:#e2e2e3] [--pupil-color:#0f172a] align-middle" />
       </div>
     )
   }

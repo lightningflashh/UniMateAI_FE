@@ -5,7 +5,7 @@ import {
   Users,
 } from 'lucide-react'
 
-import { StatCard } from './stat-card'
+import { StatCard } from '@/components/dashboard/stat-card'
 
 export function StatsSection() {
   return (
