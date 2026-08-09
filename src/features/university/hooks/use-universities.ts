@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { keepPreviousData, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'sonner'
 
 import { universityApi } from '@/features/university/api/university.api'
@@ -15,9 +15,9 @@ export function useUniversities(
     queryFn: async () => {
       const response =
         await universityApi.getAll(params)
-
       return response.data
     },
+    placeholderData: keepPreviousData
   })
 }
 
@@ -81,7 +81,7 @@ export function useDeleteUniversity() {
 
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['universities'],
+        queryKey: ['universities'], exact: true,
       })
 
       toast.success(

@@ -12,7 +12,7 @@ interface RetryRequestConfig
   _retry?: boolean
 }
 
-let refreshPromise: Promise<void> | null = null
+let refreshPromise: Promise<void> | null = null // ensure only one refresh request is made at a time
 
 export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
