@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { UniversityForm } from './university-form'
+import { UniversityForm } from '@/features/university/components/university-form'
 
 describe('UniversityForm', () => {
   it('should render form fields', () => {

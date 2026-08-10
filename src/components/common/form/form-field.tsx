@@ -4,15 +4,10 @@ import { cn } from '@/lib/utils'
 
 interface FormFieldProps {
   label: string
-
   htmlFor?: string
-
   error?: string
-
   required?: boolean
-
   className?: string
-
   children: React.ReactNode
 }
 

@@ -21,7 +21,7 @@ export function QueryProvider({
           queries: {
             retry: 1,
             refetchOnWindowFocus: false,
-            staleTime: 1000 * 60 * 5,
+            staleTime: 1000 * 3,
           },
           mutations: {
             retry: 0,

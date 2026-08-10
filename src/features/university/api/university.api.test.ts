@@ -1,5 +1,4 @@
-import { universityApi } from './university.api'
-
+import { universityApi } from '@/features/university/api/university.api'
 import { api } from '@/lib/axios'
 
 jest.mock('@/lib/axios', () => ({
