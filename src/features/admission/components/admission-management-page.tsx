@@ -9,8 +9,7 @@ import { cn } from '@/lib/utils'
 type Tab = 'methods' | 'scores'
 
 export function AdmissionManagementPage() {
-  const [tab, setTab] =
-    useState<Tab>('methods')
+  const [tab, setTab] = useState<Tab>('methods')
 
   return (
     <div className="space-y-6">
