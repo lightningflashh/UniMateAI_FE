@@ -22,15 +22,12 @@ export function useMajors(
 
       return response.data
     },
-
-    enabled: Boolean(
-      params?.universityId,
-    ),
   })
 }
 
 export function useCreateMajor() {
-  const queryClient = useQueryClient()
+  const queryClient =
+    useQueryClient()
 
   return useMutation({
     mutationFn: (
@@ -58,7 +55,8 @@ export function useCreateMajor() {
 }
 
 export function useUpdateMajor() {
-  const queryClient = useQueryClient()
+  const queryClient =
+    useQueryClient()
 
   return useMutation({
     mutationFn: ({
@@ -91,7 +89,8 @@ export function useUpdateMajor() {
 }
 
 export function useDeleteMajor() {
-  const queryClient = useQueryClient()
+  const queryClient =
+    useQueryClient()
 
   return useMutation({
     mutationFn: (id: string) =>
