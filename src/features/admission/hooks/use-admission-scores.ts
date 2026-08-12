@@ -64,8 +64,7 @@ export function useUpdateAdmissionScore() {
       data: Parameters<
         typeof admissionScoreApi.update
       >[1]
-    }) =>
-      admissionScoreApi.update(id, data),
+    }) => admissionScoreApi.update(id, data),
 
     onSuccess: () => {
       queryClient.invalidateQueries({

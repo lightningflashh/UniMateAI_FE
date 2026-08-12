@@ -7,3 +7,11 @@ export interface AdmissionMethod {
   updatedAt: string
   deletedAt?: string | null
 }
+
+export interface CreateAdmissionMethodDto {
+  code: string
+  name: string
+  description?: string
+}
+
+export type UpdateAdmissionMethodDto = Partial<CreateAdmissionMethodDto>

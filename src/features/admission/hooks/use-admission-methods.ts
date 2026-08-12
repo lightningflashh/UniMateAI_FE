@@ -9,6 +9,7 @@ import {
   admissionMethodApi,
   type AdmissionMethodQueryParams,
 } from '@/features/admission/api/admission-method.api'
+import { CreateAdmissionMethodDto, UpdateAdmissionMethodDto } from '@/types/admission-method.type'
 
 export function useAdmissionMethods(
   params?: AdmissionMethodQueryParams,
@@ -29,26 +30,24 @@ export function useCreateAdmissionMethod() {
   const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: admissionMethodApi.create,
+    mutationFn: (data: CreateAdmissionMethodDto) =>
+      admissionMethodApi.create(data),
 
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['admission-methods'],
       })
 
-      toast.success(
-        'Admission method created successfully',
-      )
+      toast.success('Admission method created successfully')
     },
 
     onError: () => {
-      toast.error(
-        'Failed to create admission method',
-      )
+      toast.error('Failed to create admission method')
     },
   })
 }
 
+// 2. Hook Update
 export function useUpdateAdmissionMethod() {
   const queryClient = useQueryClient()
 
@@ -58,26 +57,19 @@ export function useUpdateAdmissionMethod() {
       data,
     }: {
       id: string
-      data: Parameters<
-        typeof admissionMethodApi.update
-      >[1]
-    }) =>
-      admissionMethodApi.update(id, data),
+      data: UpdateAdmissionMethodDto
+    }) => admissionMethodApi.update(id, data),
 
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ['admission-methods'],
       })
 
-      toast.success(
-        'Admission method updated successfully',
-      )
+      toast.success('Admission method updated successfully')
     },
 
     onError: () => {
-      toast.error(
-        'Failed to update admission method',
-      )
+      toast.error('Failed to update admission method')
     },
   })
 }

@@ -22,6 +22,7 @@ export function useMajors(
 
       return response.data
     },
+    enabled: Boolean(params?.universityId && params.universityId.trim()), // Avoid fetching majors if universityId is not provided or is empty
   })
 }
 

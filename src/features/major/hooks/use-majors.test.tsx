@@ -144,13 +144,9 @@ describe('useMajors', () => {
       },
     )
 
-    expect(result.current.fetchStatus).toBe(
-      'idle',
-    )
+    expect(result.current.fetchStatus).toBe('idle')
 
-    expect(
-      mockedMajorApi.getAll,
-    ).not.toHaveBeenCalled()
+    expect(mockedMajorApi.getAll).not.toHaveBeenCalled()
   })
 
   it('should handle get majors error', async () => {

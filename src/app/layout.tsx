@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import {
-  Figtree,
   Geist,
   Geist_Mono,
+  Roboto,
 } from 'next/font/google'
 
 import '@/app/globals.css'
@@ -11,8 +11,9 @@ import { cn } from '@/lib/utils'
 import { AuthProvider } from '@/providers/auth-provider'
 import { QueryProvider } from '@/providers/query-provider'
 
-const figtree = Figtree({
-  subsets: ['latin'],
+const roboto = Roboto({
+  weight: ['400', '500', '700'],
+  subsets: ['latin', 'vietnamese'],
   variable: '--font-sans',
 })
 
@@ -42,12 +43,12 @@ export default function RootLayout({
       className={cn(
         'h-full',
         'antialiased',
-        figtree.variable,
+        roboto.variable,
         geistSans.variable,
         geistMono.variable,
       )}
     >
-      <body className="min-h-screen">
+      <body className="min-h-screen font-sans"> {/* Thêm font-sans ở đây */}
         <QueryProvider>
           <AuthProvider>
             {children}
