@@ -32,7 +32,6 @@ export default function DashboardLayout({
 
       <SidebarInset>
         <AppHeader />
-
         <main className="flex-1 p-6">
           {children}
         </main>

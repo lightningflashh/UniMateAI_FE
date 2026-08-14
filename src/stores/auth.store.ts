@@ -19,25 +19,31 @@ interface AuthState {
   ) => void
 }
 
-export const useAuthStore = create<AuthState>(set => ({
-  accessToken: null,
-  user: null,
-  isLoading: true,
+export const useAuthStore =
+  create<AuthState>(set => ({
+    accessToken: null,
+    user: null,
+    isLoading: true,
 
-  setAuth: (accessToken, user) =>
-    set({
+    setAuth: (
       accessToken,
       user,
-    }),
+    ) =>
+      set({
+        accessToken,
+        user,
+        isLoading: false,
+      }),
 
-  clearAuth: () =>
-    set({
-      accessToken: null,
-      user: null,
-    }),
+    clearAuth: () =>
+      set({
+        accessToken: null,
+        user: null,
+        isLoading: false,
+      }),
 
-  setLoading: isLoading =>
-    set({
-      isLoading,
-    }),
-}))
+    setLoading: isLoading =>
+      set({
+        isLoading,
+      }),
+  }))
